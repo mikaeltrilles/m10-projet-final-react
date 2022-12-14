@@ -2,6 +2,7 @@ import './App.css';
 import Login from './components/Login';
 import Gestion from './components/Gestion';
 import { useState } from 'react';
+import Navbar from './components/Navbar';
 
 function App() {
   const [isLog, setIsLog] = useState(false)
@@ -15,11 +16,20 @@ function App() {
   return (
 
     <div className="App">
-      <h1>Welcome</h1>
-      {/* Si le login est ok alors je renvoi vers la page de gestion */}
+      { }
 
-
-      {(isLog) ? <Gestion /> : <Login setIsLog={handleSetIsLog} />}
+      {(isLog) ?
+        <>
+          <h1>Bienvenue sur votre espace de gestion</h1>
+          <Navbar />
+          <Gestion />
+        </>
+        :
+        <>
+          <h1>Projet Final GDA</h1>
+          <Login setIsLog={handleSetIsLog} />
+        </>
+      }
       {/* <Gestion /> */}
     </div>
   );

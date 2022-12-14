@@ -7,13 +7,13 @@ function Gestion() {
   // const [employe, setEmploye] = useState([])
   // const backendUrl = "http://localhost:3001/api/"
 
-//TODO Affichage des informations des absences
+  //TODO Affichage des informations des absences
 
 
 
 
 
-// TODO Ajouter une absence
+  // TODO Ajouter une absence
 
 
 
@@ -38,11 +38,11 @@ function Gestion() {
         console.log(reponse.data);
       })
   }
-  jourFerie('2025');
+  jourFerie('2027'); // TODO mettre le select de l'année du calendrier pour affiche les feries de l'année demandée depart 2000 jusqu'a anéée en cours +5 ans
 
   // function connection(employe) {
-    // axios.post(backendUrl + 'login', employe)
-      // .then((response) => console.log('Redirection page accueil'))
+  // axios.post(backendUrl + 'login', employe)
+  // .then((response) => console.log('Redirection page accueil'))
 
   // }
 
@@ -50,6 +50,15 @@ function Gestion() {
 
 
 
-}
+  return (
 
+<h2>nom prenom</h2>
+
+
+
+
+
+
+  )
+}
 export default Gestion
