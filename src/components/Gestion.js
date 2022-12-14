@@ -1,8 +1,13 @@
 import axios from 'axios';
+// import { useState } from 'react';
 
 function Gestion() {
 
-  // const backendUrl = "http://127.0.0.1:3001/api/"
+  // const [employe, setEmploye] = useState([])
+
+
+
+  // const backendUrl = "http://localhost:3001/api/"
 
   function jourFerie(annee) {
     axios.get(`https://calendrier.api.gouv.fr/jours-feries/metropole/${annee}.json`)
@@ -10,8 +15,16 @@ function Gestion() {
         console.log(reponse.data);
       })
   }
-
   jourFerie('2025');
+
+  // function connection(employe) {
+    // axios.post(backendUrl + 'login', employe)
+      // .then((response) => console.log('Redirection page accueil'))
+
+  // }
+
+  // connection(employe);
+
 
 
 }
