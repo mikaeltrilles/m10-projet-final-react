@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[![wakatime](https://wakatime.com/badge/user/933ebfa6-42e4-4a54-b3fc-658e9f1ab22f/project/96f0224d-02ac-43fc-b796-9db81c3ae88a.svg)](https://wakatime.com/badge/user/933ebfa6-42e4-4a54-b3fc-658e9f1ab22f/project/96f0224d-02ac-43fc-b796-9db81c3ae88a)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
