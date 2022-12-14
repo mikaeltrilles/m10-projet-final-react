@@ -16,17 +16,13 @@ const Login = ({ setIsLog }) => {
         console.log(response);
         if (response.data.isLog) {
           setIsLog()
+          console.log(response.data.token);
+          localStorage.setItem('tokens', JSON.stringify(response.data.token));
           console.log('Connection OK')
         } else {
           console.log('Connection KO')
         }
       })
-
-    // .then(() => {
-    // if()
-    // })
-    // console.log(e.target.email.value)
-    // console.log(e.target.password.value)
   }
 
 
