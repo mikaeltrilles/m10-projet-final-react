@@ -1,8 +1,8 @@
 import './App.css';
 import Login from './components/Login';
-import Gestion from './components/Gestion';
 import { useState } from 'react';
-import Navbar from './components/Navbar';
+import { BrowserRouter } from 'react-router-dom';
+import Nav from './components/Nav';
 
 function App() {
   const [isLog, setIsLog] = useState(false)
@@ -21,8 +21,9 @@ function App() {
       {(isLog) ?
         <>
           <h1>Bienvenue sur votre espace de gestion</h1>
-          <Navbar />
-          <Gestion />
+          <BrowserRouter>
+            <Nav />
+          </BrowserRouter>
         </>
         :
         <>
@@ -31,6 +32,7 @@ function App() {
         </>
       }
       {/* <Gestion /> */}
+
     </div>
   );
 }

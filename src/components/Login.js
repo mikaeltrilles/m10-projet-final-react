@@ -10,7 +10,7 @@ const Login = ({ setIsLog }) => {
       email: e.target.email.value,
       mdp: e.target.password.value
     }
-    axios.post('http://localhost:3001/login', utilisateur)
+    axios.post('http://127.0.0.1:3001/login', utilisateur)
       .then((response) => {
         console.log(utilisateur);
         console.log(response);
@@ -18,6 +18,7 @@ const Login = ({ setIsLog }) => {
           setIsLog()
           console.log(response.data.token);
           localStorage.setItem('tokens', JSON.stringify(response.data.token));
+          localStorage.setItem('user_id', JSON.stringify(response.data.userId));
           console.log('Connection OK')
         } else {
           console.log('Connection KO')
