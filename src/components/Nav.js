@@ -12,24 +12,24 @@ const Nav = () => {
     const backendUrl = 'http://127.0.0.1:3001/'
 
     const fetchData = () => {
-      axios.get(backendUrl + 'absences')
-      .then( res  => {
-        setAbsences(res.data)
-      })
-      .catch( err => console.log(err))
+        axios.get(backendUrl + 'absences')
+            .then(res => {
+                setAbsences(res.data)
+            })
+            .catch(err => console.log(err))
     }
-  
+
     const [absences, setAbsences] = useState([])
     useEffect(() => fetchData(), [])
 
-    const [congeModi,setCongeModi] = useState({})
+    const [congeModi, setCongeModi] = useState({})
 
     const deleteConge = (id) => {
         axios.delete(`http://127.0.0.1:3001/delete/${id}`)
-        .then(() => {
-            setAbsences(absences.filter(abs => abs._id !== id))
-        })
-        .catch( err => console.log(err) )
+            .then(() => {
+                setAbsences(absences.filter(abs => abs._id !== id))
+            })
+            .catch(err => console.log(err))
     }
 
     // appeler renderNewAbsence dans component AjouterAbsence pour render new absence list une fois qu'on a ajouter une nouvelle absence dans DB
@@ -44,11 +44,11 @@ const Nav = () => {
                 <Link to="/absences">Planning</Link>
                 {/* <Link to="/congé">gestion congé</Link> */}
                 <Routes>
-                    <Route index element={<Gestion absences={absences} deleteConge = {deleteConge} setCongeModi = {setCongeModi}/>} />
-                    <Route path="/" element={<Gestion absences={absences} deleteConge = {deleteConge} setCongeModi = {setCongeModi} />} />
+                    <Route index element={<Gestion absences={absences} deleteConge={deleteConge} setCongeModi={setCongeModi} />} />
+                    <Route path="/" element={<Gestion absences={absences} deleteConge={deleteConge} setCongeModi={setCongeModi} />} />
                     <Route path="absences" element={<PlanningAbsences />} />
-                    <Route path="ajout" element={<AjouterAbsence renderNewAbsence = {renderNewAbsence}/>} />
-                    <Route path="modify" element={<ModifierAbsence renderNewAbsence = {renderNewAbsence} congeModi = {congeModi} setCongeModi={setCongeModi}/>} />
+                    <Route path="ajout" element={<AjouterAbsence renderNewAbsence={renderNewAbsence} />} />
+                    <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
             </nav>
