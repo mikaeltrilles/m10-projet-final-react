@@ -17,7 +17,11 @@ const AffichageAbsences = ({ absence, deleteConge, handleSetCongeModi }) => {
             <td>{absence.statut}</td>
 
             <td>
-                <button onClick={deleteConge}>Supprimer</button>
+                {absence.statut === "INITIALE" || absence.statut === "REJETEE" ?
+                    <button onClick={deleteConge}>Supprimer</button>
+                    :
+                    ''
+                }
                 {absence.statut === "INITIALE" || absence.statut === "REJETEE" ?
                     <Link to="/modify">
                         <button onClick={handleOnclick}>Modifier</button>
