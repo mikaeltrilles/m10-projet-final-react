@@ -12,16 +12,11 @@ const Login = ({ setIsLog }) => {
     }
     axios.post('http://127.0.0.1:3001/login', utilisateur)
       .then((response) => {
-        console.log(utilisateur);
-        console.log(response);
         if (response.data.isLog) {
-          setIsLog()
-          console.log(response.data.token);
+          setIsLog();
           localStorage.setItem('tokens', JSON.stringify(response.data.token));
           localStorage.setItem('user_id', JSON.stringify(response.data.userId));
-          console.log('Connection OK')
         } else {
-          console.log('Connection KO')
         }
       })
   }

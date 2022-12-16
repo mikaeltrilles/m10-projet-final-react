@@ -1,16 +1,30 @@
-import moment from 'moment'
 
-const AffichageAbsences = ({ absence, deleteConge }) => {
+import moment from 'moment';
+import { Link} from 'react-router-dom';
+// import ModifierAbsence from './ModifierAbsence';
 
-    // FILTRE PAR ID EMPLOYE
-    moment.locale();
+const AffichageAbsences = ({ absence, deleteConge, handleSetCongeModi   }) => {
+
+    const handleOnclick = () => {
+        handleSetCongeModi()
+    }
+
     return (
         <tr>
-            <td>{moment(absence.dateDebut).format('DD.MM.YYYY')} </td>
-            <td>{moment(absence.dateFin).format('DD.MM.YYYY')}</td>
+            <td>{moment(absence.dateDebut).format('DD-MM-YYYY')} </td>
+            <td>{moment(absence.dateFin).format('DD-MM-YYYY')}</td>
             <td>{absence.type}</td>
             <td>{absence.statut}</td>
-            <td><button id={absence._id} onClick={deleteConge}>Supprimer</button><button>Modifier</button><button>Voir</button></td>
+            
+            <td>
+                <button onClick={deleteConge}>Supprimer</button>
+                <Link to="/modify"> 
+                    <button onClick = {handleOnclick}>Modifier</button>
+                </Link>
+                <button>Voir</button>
+            </td>
+            
+
         </tr>
     );
 };

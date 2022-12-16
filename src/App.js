@@ -9,9 +9,7 @@ function App() {
 
   function handleSetIsLog() {
     setIsLog(true);
-    // console.log(isLog);
   }
-
 
   return (
 
@@ -20,8 +18,8 @@ function App() {
 
       {(isLog) ?
         <>
-          <h1>Bienvenue sur votre espace de gestion</h1>
           <BrowserRouter>
+            <h1>Bienvenue sur votre espace de gestion</h1>
             <Nav />
           </BrowserRouter>
         </>
@@ -31,7 +29,6 @@ function App() {
           <Login setIsLog={handleSetIsLog} />
         </>
       }
-      {/* <Gestion /> */}
 
     </div>
   );
