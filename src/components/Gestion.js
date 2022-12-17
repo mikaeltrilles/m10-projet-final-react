@@ -1,12 +1,10 @@
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AffichageAbsences from './AffichageAbsences';
 
+
 // import { useState } from 'react';
 
-function Gestion({absences, deleteConge, setCongeModi}) {
-  console.log(absences)
+function Gestion({absences, setCongeModi}) {
 
   return (
     <div>
@@ -24,8 +22,11 @@ function Gestion({absences, deleteConge, setCongeModi}) {
           {absences.map( abs => (
             <AffichageAbsences
               key={abs._id}
-              absence={abs}
-              deleteConge = {() => deleteConge(abs._id) }
+              absence = {abs}
+              deleteConge = {() => {
+                // quand clicquer le supprimer, actualise state congeModi pour le component Modal 
+                setCongeModi(abs);
+              }}
               handleSetCongeModi = {()=> {
                 setCongeModi(abs)}}
                />
