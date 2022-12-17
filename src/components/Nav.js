@@ -5,6 +5,7 @@ import ErrorPage from './ErrorPage';
 import Gestion from './Gestion';
 import ModifierAbsence from './ModifierAbsence';
 import PlanningAbsences from './PlanningAbsences';
+import Modal from './Modal';
 import axios from 'axios';
 
 const Nav = () => {
@@ -44,14 +45,15 @@ const Nav = () => {
                 <Link to="/absences">Planning</Link>
                 {/* <Link to="/congé">gestion congé</Link> */}
                 <Routes>
-                    <Route index element={<Gestion absences={absences} deleteConge={deleteConge} setCongeModi={setCongeModi} />} />
-                    <Route path="/" element={<Gestion absences={absences} deleteConge={deleteConge} setCongeModi={setCongeModi} />} />
+                    <Route index element={<Gestion absences={absences} setCongeModi = {setCongeModi} />} />
+                    <Route path="/" element={<Gestion absences={absences} setCongeModi = {setCongeModi} />} />
                     <Route path="absences" element={<PlanningAbsences />} />
                     <Route path="ajout" element={<AjouterAbsence renderNewAbsence={renderNewAbsence} />} />
                     <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
             </nav>
+            <Modal congeModi = {congeModi} deleteConge = { deleteConge }/>
         </div>
     );
 };
