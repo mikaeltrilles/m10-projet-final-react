@@ -14,8 +14,7 @@ const Login = ({ setIsLog }) => {
       .then((response) => {
         if (response.data.isLog) {
           setIsLog();
-          localStorage.setItem('tokens', JSON.stringify(response.data.token));
-          localStorage.setItem('user_id', JSON.stringify(response.data.userId));
+          localStorage.setItem('user', JSON.stringify(response.data));
         } else {
         }
       })

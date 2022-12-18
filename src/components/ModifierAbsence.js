@@ -40,44 +40,45 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
 
   return (
     <>
-      <h1>Ajout</h1>
+      <h1 className="fs-3 mb-5">Modification d'une absence</h1>
 
       <form
         onSubmit={handleSubmit}
         method="POST"
         id="form"
-        className="container"
+        className="m-auto w-50"
       >
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+        <div className="mb-3 d-flex justify-content-center">
+          <label htmlFor="exampleFormControlInput1" className="form-label w-25">
             Date de début
           </label>
           <input
             type="date"
             name="date_debut"
-            className="form-control"
+            className="form-control w-50"
             id="exampleFormControlInput1"
             value={dateDebut}
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+        <div className="mb-3 d-flex justify-content-center">
+          <label htmlFor="exampleFormControlInput1" className="form-label w-25">
             Date de fin
           </label>
           <input
             type="date"
             name="date_fin"
-            className="form-control"
+            className="form-control w-50"
             id="exampleFormControlInput1"
             value={dateFin}
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 d-flex justify-content-center">
+        <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type de congés</label>
           <select
             name="type_conges"
-            className="form-select"
+            className="form-select w-50"
             aria-label="Default select example"
           >
             {congeModi.type === "RTT" && (
@@ -105,22 +106,27 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
             )}
           </select>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+        <div className="mb-3 d-flex justify-content-center">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label w-25">
             Motif
           </label>
           <textarea
             name="motif_conges"
-            className="form-control"
+            className="form-control w-50"
             id="exampleFormControlTextarea1"
             rows="3"
             defaultValue={congeModi.motif}
             onChange={() => {}}
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <div className="my-4 d-flex gap-5 justify-content-center">
+          <button type="button" className="btn btn-danger" onClick = {()=> navigate("/")}>
+            Annuler
+          </button>
+          <button type="submit" className="btn btn-primary">
+            Valider
+          </button>
+        </div>
       </form>
     </>
   );
