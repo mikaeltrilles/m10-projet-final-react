@@ -19,7 +19,7 @@ function App() {
       {(isLog) ?
         <>
           <BrowserRouter>
-            <h1>Bienvenue sur votre espace de gestion</h1>
+            <h1 className='m-5'>Bienvenue sur votre espace de gestion</h1>
             <Nav />
           </BrowserRouter>
         </>

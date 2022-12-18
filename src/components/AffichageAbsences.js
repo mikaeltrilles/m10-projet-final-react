@@ -13,6 +13,7 @@ const AffichageAbsences = ({ absence, deleteConge, handleSetCongeModi }) => {
 
       <td>
         <button
+          className="btn btn-outline-danger me-md-2 btn-sm"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           onClick={deleteConge}
@@ -21,9 +22,9 @@ const AffichageAbsences = ({ absence, deleteConge, handleSetCongeModi }) => {
           Supprimer
         </button>
         <Link to="/modify">
-          <button onClick={handleSetCongeModi}>Modifier</button>
+          <button className="btn btn-outline-warning me-md-2 btn-sm" onClick={handleSetCongeModi}>Modifier</button>
         </Link>
-        <button>Voir</button>
+        <button className="btn btn-outline-success btn-sm">Voir</button>
       </td>
     </tr>
   );

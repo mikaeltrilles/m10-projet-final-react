@@ -7,8 +7,8 @@ import AffichageAbsences from './AffichageAbsences';
 function Gestion({absences, setCongeModi}) {
 
   return (
-    <div>
-      <table className="table">
+    <div className="container">
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Date de début</th>

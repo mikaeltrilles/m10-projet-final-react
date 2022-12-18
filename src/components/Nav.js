@@ -39,7 +39,7 @@ const Nav = () => {
 
     return (
         <div>
-            <nav className="nav">
+            <nav className="navbar bg-light justify-content-center gap-5 m-5">
                 <Link className="nav-link" to="/">Gestion des absences</Link>
                 <Link className="nav-link" to="/absences">Planning des absences</Link>
                 {/* ROLE_MANAGER */}
