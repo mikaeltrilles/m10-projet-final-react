@@ -120,7 +120,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
           ></textarea>
         </div>
         <div className="my-4 d-flex gap-5 justify-content-center">
-          <button type="submit" className="btn btn-danger">
+          <button type="button" className="btn btn-danger" onClick = {()=> navigate("/")}>
             Annuler
           </button>
           <button type="submit" className="btn btn-primary">
