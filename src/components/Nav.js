@@ -7,6 +7,7 @@ import ModifierAbsence from './ModifierAbsence';
 import PlanningAbsences from './PlanningAbsences';
 import Modal from './Modal';
 import axios from 'axios';
+import Validation from './Validation';
 
 const Nav = () => {
 
@@ -15,7 +16,11 @@ const Nav = () => {
     const backendUrl = 'http://127.0.0.1:3001/';
 
     const fetchData = () => {
-        axios.get(backendUrl + 'absences')
+        axios.get(backendUrl + 'absences', {
+            headers: {
+                'Authorization': `Basic ${utilisateur.token}` 
+              }
+        })
             .then( res => setAbsences(res.data) )
             .catch( err => console.log(err))
     }
@@ -59,6 +64,7 @@ const Nav = () => {
                 <Route path="absences" element={<PlanningAbsences />} />
                 <Route path="ajout" element={<AjouterAbsence renderNewAbsence={renderNewAbsence} />} />
                 <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
+                <Route path="validation" element={<Validation setCongeModi={setCongeModi}/>} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Modal congeModi={congeModi} deleteConge={deleteConge} />
