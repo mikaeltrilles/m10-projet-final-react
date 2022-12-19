@@ -46,6 +46,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
                         <option value="Congés sans soldes">Congés sans soldes</option>
                     </select>
                 </div>
+                {/* TODO Si le type de conges est "conges sans solde" le motif est obligatoire */}
                 <div className="mb-3 d-flex justify-content-center">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label w-25">Motif</label>
                     <textarea name="motif_conges" className="form-control w-50" id="exampleFormControlTextarea1" rows="3"></textarea>
