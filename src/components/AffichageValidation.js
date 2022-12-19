@@ -1,8 +1,36 @@
+import axios from "axios";
 import moment from "moment";
-import { Link } from "react-router-dom";
-// import ModifierAbsence from './ModifierAbsence';
 
-const AffichageValidation = ({ absence, deleteConge, handleSetCongeModi }) => {
+
+const AffichageValidation = ({ absence , fetchData }) => {
+  const utilisateur = JSON.parse(localStorage.getItem('user'));
+
+  const handleValidation = () => {
+    console.log(absence)
+    axios.put(`http://127.0.0.1:3001/validation/${absence._id}`, {
+      headers: {
+        'Authorization': `Basic ${utilisateur.token}`
+      },
+      data: {
+        statut: 'VALIDEE'
+      }
+    })
+      .then( res =>  fetchData() ) // rechargement de la list
+      .catch(err => console.log(err))
+  }
+
+  const handleRejet = () => {
+    axios.put(`http://127.0.0.1:3001/validation/${absence._id}`, {
+      headers: {
+        'Authorization': `Basic ${utilisateur.token}`
+      },
+      data: {
+        statut: 'REJETEE'
+      }
+    })
+      .then(res => console.log(res)) 
+      .catch(err => console.log(err))
+  }
 
   return (
     <tr>
@@ -12,15 +40,10 @@ const AffichageValidation = ({ absence, deleteConge, handleSetCongeModi }) => {
       <td>{absence.nom} {absence.prenom}</td>
 
       <td>
-        <Link to="/modify">
-        <button className="btn btn-outline-success me-md-2 btn-sm" onClick={handleSetCongeModi}>Valider</button>
-        </Link>
+        <button className="btn btn-outline-success me-md-2 btn-sm" onClick={handleValidation}>Valider</button>
         <button
           className="btn btn-outline-danger me-md-2 btn-sm"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          onClick={deleteConge}
-         
+          onClick={handleRejet}
         >
           Rejetter
         </button>

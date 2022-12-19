@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 import { useState, useEffect } from 'react';
@@ -44,17 +44,11 @@ useEffect(() => fetchData(), []);
             <AffichageValidation
               key={abs._id}
               absence = {abs}
-              deleteConge = {() => {
-                // quand clicquer le supprimer, actualise state congeModi pour le component Modal 
-                setCongeModi(abs);
-              }}
-              handleSetCongeModi = {()=> {
-                setCongeModi(abs)}}
+              fetchData= {fetchData}
                />
           ))}
         </tbody>
       </table>
-      <Link to="/ajout"><button type="submit" className="btn btn-primary">➕ Demande d'absence</button></Link>
     </div >
   );
 };
