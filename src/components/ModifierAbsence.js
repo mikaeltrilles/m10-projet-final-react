@@ -4,8 +4,8 @@ import axios from "axios";
 import moment from "moment";
 
 const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
-  console.log(congeModi);
   const navigate = useNavigate();
+  const utilisateur = JSON.parse(localStorage.getItem('user'));
   const dateDebut = moment(congeModi.dateDebut).format("YYYY-MM-DD");
   const dateFin = moment(congeModi.dateFin).format("YYYY-MM-DD");
 
@@ -21,14 +21,23 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // transformer la périod d'Absence en list de jour d'absence
+    let arr = [];
+    for (let dt = new Date(e.target.date_debut.value); dt <= new Date(e.target.date_fin.value); dt.setDate(dt.getDate() + 1)) {
+      arr.push(new Date(dt));
+    }
     const form = {
       dateDebut: e.target.date_debut.value,
       dateFin: e.target.date_fin.value,
       type: e.target.type_conges.value,
       motif: e.target.motif_conges.value,
       statut: "INITIALE",
-      idEmploye: localStorage.getItem("user_id"),
-    };
+      idEmploye: utilisateur.userId,
+      departement: utilisateur.departement,
+      nom: utilisateur.nom,
+      prenom: utilisateur.prenom,
+      jours: arr
+    }
 
     axios
       .put(`http://127.0.0.1:3001/${congeModi._id}`, form)
@@ -75,7 +84,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
           />
         </div>
         <div className="mb-3 d-flex justify-content-center">
-        <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type de congés</label>
+          <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type de congés</label>
           <select
             name="type_conges"
             className="form-select w-50"
@@ -116,11 +125,11 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
             id="exampleFormControlTextarea1"
             rows="3"
             defaultValue={congeModi.motif}
-            onChange={() => {}}
+            onChange={() => { }}
           ></textarea>
         </div>
         <div className="my-4 d-flex gap-5 justify-content-center">
-          <button type="button" className="btn btn-danger" onClick = {()=> navigate("/")}>
+          <button type="button" className="btn btn-danger" onClick={() => navigate("/")}>
             Annuler
           </button>
           <button type="submit" className="btn btn-primary">

@@ -4,24 +4,36 @@ import { useNavigate } from "react-router-dom";
 const AjouterAbsence = ({ renderNewAbsence }) => {
     const navigate = useNavigate();
 
+    const utilisateur = JSON.parse(localStorage.getItem('user'));
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        // transformer la périod d'Absence en list de jour d'absence
+        let arr = [];
+        for (let dt = new Date(e.target.date_debut.value); dt <= new Date(e.target.date_fin.value); dt.setDate(dt.getDate() + 1)) {
+            arr.push(new Date(dt));
+        }
+      
         const form = {
             dateDebut: e.target.date_debut.value,
             dateFin: e.target.date_fin.value,
             type: e.target.type_conges.value,
             motif: e.target.motif_conges.value,
             statut: "INITIALE",
-            idEmploye: localStorage.getItem('user_id')
+            idEmploye: utilisateur.userId,
+            departement: utilisateur.departement,
+            nom: utilisateur.nom,
+            prenom: utilisateur.prenom,
+            jours: arr
         }
-       
+
         axios.post('http://127.0.0.1:3001/creationAbsence', form)
-            .then( response  => {
+            .then(response => {
                 navigate('/')
                 renderNewAbsence();
             })
-            .catch( err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     return (
