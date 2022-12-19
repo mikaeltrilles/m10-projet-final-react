@@ -14,7 +14,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
         for (let dt = new Date(e.target.date_debut.value); dt <= new Date(e.target.date_fin.value); dt.setDate(dt.getDate() + 1)) {
             arr.push(new Date(dt));
         }
-      
+
         const form = {
             dateDebut: e.target.date_debut.value,
             dateFin: e.target.date_fin.value,
@@ -26,7 +26,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
             nom: utilisateur.nom,
             prenom: utilisateur.prenom,
             jours: arr,
-            createdAt:new Date()
+            createdAt: new Date()
         }
 
         axios.post('http://127.0.0.1:3001/creationAbsence', form)
@@ -64,7 +64,14 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
                     <label htmlFor="exampleFormControlTextarea1" className="form-label w-25">Motif</label>
                     <textarea name="motif_conges" className="form-control w-50" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="my-4 d-flex gap-5 justify-content-center">
+                    <button type="button" className="btn btn-danger" onClick={() => navigate("/")}>
+                        Annuler
+                    </button>
+                    <button type="submit" className="btn btn-primary">
+                        Valider
+                    </button>
+                </div>
             </form>
         </>
     );
