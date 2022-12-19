@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-const Modal = ({congeModi,deleteConge}) => {
+const Modal = ({ congeModi, deleteConge }) => {
 
   return (
     <div className="modal fade" id="exampleModal" tabIndex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -30,11 +30,11 @@ const Modal = ({congeModi,deleteConge}) => {
             >
               Annuler
             </button>
-            <button 
-            type="button" 
-            className="btn btn-primary" 
-            data-bs-dismiss="modal"
-            onClick = {() => { deleteConge(congeModi._id) }}
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-bs-dismiss="modal"
+              onClick={() => { deleteConge(congeModi._id) }}
             >
               Valider
             </button>

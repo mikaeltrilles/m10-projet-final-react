@@ -15,13 +15,13 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
             statut: "INITIALE",
             idEmploye: localStorage.getItem('user_id')
         }
-       
+
         axios.post('http://127.0.0.1:3001/creationAbsence', form)
-            .then( response  => {
+            .then(response => {
                 navigate('/')
                 renderNewAbsence();
             })
-            .catch( err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     return (

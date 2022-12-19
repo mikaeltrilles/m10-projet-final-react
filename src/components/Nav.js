@@ -16,8 +16,8 @@ const Nav = () => {
 
     const fetchData = () => {
         axios.get(backendUrl + 'absences')
-            .then( res => setAbsences(res.data) )
-            .catch( err => console.log(err))
+            .then(res => setAbsences(res.data))
+            .catch(err => console.log(err))
     }
 
     const [absences, setAbsences] = useState([]);
@@ -29,7 +29,7 @@ const Nav = () => {
     const deleteConge = (id) => {
         axios.delete(`http://127.0.0.1:3001/delete/${id}`)
             .then(() => { setAbsences(absences.filter(abs => abs._id !== id)) })
-            .catch( err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     // appeler renderNewAbsence dans component AjouterAbsence pour render new absence list une fois qu'on a ajouter une nouvelle absence dans DB
@@ -43,7 +43,7 @@ const Nav = () => {
                 <Link className="nav-link" to="/">Gestion des absences</Link>
                 <Link className="nav-link" to="/absences">Planning des absences</Link>
                 {/* ROLE_MANAGER */}
-                { utilisateur.role === 'ROLE_MANAGER' &&
+                {utilisateur.role === 'ROLE_MANAGER' &&
                     <>
                         <Link className="nav-link" to="/validation">Validation demandes</Link>
                         <Link className="nav-link" to="/synthese">Vues synthétique</Link>

@@ -4,7 +4,7 @@ import AffichageAbsences from './AffichageAbsences';
 
 // import { useState } from 'react';
 
-function Gestion({absences, setCongeModi}) {
+function Gestion({ absences, setCongeModi }) {
 
   return (
     <div className="container">
@@ -19,17 +19,18 @@ function Gestion({absences, setCongeModi}) {
           </tr>
         </thead>
         <tbody>
-          {absences.map( abs => (
+          {absences.map(abs => (
             <AffichageAbsences
               key={abs._id}
-              absence = {abs}
-              deleteConge = {() => {
+              absence={abs}
+              deleteConge={() => {
                 // quand clicquer le supprimer, actualise state congeModi pour le component Modal 
                 setCongeModi(abs);
               }}
-              handleSetCongeModi = {()=> {
-                setCongeModi(abs)}}
-               />
+              handleSetCongeModi={() => {
+                setCongeModi(abs)
+              }}
+            />
           ))}
         </tbody>
       </table>

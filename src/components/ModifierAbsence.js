@@ -75,7 +75,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
           />
         </div>
         <div className="mb-3 d-flex justify-content-center">
-        <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type de congés</label>
+          <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type de congés</label>
           <select
             name="type_conges"
             className="form-select w-50"
@@ -116,11 +116,11 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
             id="exampleFormControlTextarea1"
             rows="3"
             defaultValue={congeModi.motif}
-            onChange={() => {}}
+            onChange={() => { }}
           ></textarea>
         </div>
         <div className="my-4 d-flex gap-5 justify-content-center">
-          <button type="button" className="btn btn-danger" onClick = {()=> navigate("/")}>
+          <button type="button" className="btn btn-danger" onClick={() => navigate("/")}>
             Annuler
           </button>
           <button type="submit" className="btn btn-primary">
