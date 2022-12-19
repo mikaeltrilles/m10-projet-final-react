@@ -8,6 +8,7 @@ import PlanningAbsences from './PlanningAbsences';
 import Modal from './Modal';
 import axios from 'axios';
 import Validation from './Validation';
+import JourFeries from './JourFeries';
 
 const Nav = () => {
 
@@ -65,6 +66,7 @@ const Nav = () => {
                 <Route path="ajout" element={<AjouterAbsence renderNewAbsence={renderNewAbsence} />} />
                 <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
                 <Route path="validation" element={<Validation setCongeModi={setCongeModi}/>} />
+                <Route path="jourferies" element={<JourFeries/>} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Modal congeModi={congeModi} deleteConge={deleteConge} />
