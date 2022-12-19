@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AffichageJourFerie from './AffichageJourFerie';
 import axios from 'axios'
+import { moment } from 'moment';
 
 const JourFeries = () => {
     const [listJours, setListJours] = useState([])
@@ -15,7 +16,8 @@ const JourFeries = () => {
                     const obj = {
                         id:crypto.randomUUID(),
                         date: property,
-                        jour: 'lundi dynamique',
+                        // J'affiche le jour en fonction de la date
+                        jour: new Date(property).toLocaleDateString('fr-FR', { weekday: 'long' }),
                         commentaire: res.data[property],
                         type: 'Féries',
 
