@@ -25,7 +25,8 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
             departement: utilisateur.departement,
             nom: utilisateur.nom,
             prenom: utilisateur.prenom,
-            jours: arr
+            jours: arr,
+            createdAt:new Date()
         }
 
         axios.post('http://127.0.0.1:3001/creationAbsence', form)
