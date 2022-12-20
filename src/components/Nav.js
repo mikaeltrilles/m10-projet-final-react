@@ -19,11 +19,11 @@ const Nav = () => {
     const fetchData = () => {
         axios.get(backendUrl + 'absences', {
             headers: {
-                'Authorization': `Basic ${utilisateur.token}` 
-              }
+                'Authorization': `Basic ${utilisateur.token}`
+            }
         })
-            .then( res => setAbsences(res.data) )
-            .catch( err => console.log(err))
+            .then(res => setAbsences(res.data))
+            .catch(err => console.log(err))
     }
 
     const [absences, setAbsences] = useState([]);
@@ -65,8 +65,8 @@ const Nav = () => {
                 <Route path="absences" element={<PlanningAbsences />} />
                 <Route path="ajout" element={<AjouterAbsence renderNewAbsence={renderNewAbsence} />} />
                 <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
-                <Route path="validation" element={<Validation setCongeModi={setCongeModi}/>} />
-                <Route path="jourferies" element={<JourFeries/>} />
+                <Route path="validation" element={<Validation setCongeModi={setCongeModi} />} />
+                <Route path="jourferies" element={<JourFeries />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Modal congeModi={congeModi} deleteConge={deleteConge} />

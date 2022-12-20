@@ -14,7 +14,7 @@ const JourFeries = () => {
                 for (const property in res.data) {
                     // list.push(<AffichageJourFerie />)
                     const obj = {
-                        id:crypto.randomUUID(),
+                        id: crypto.randomUUID(),
                         date: property,
                         // J'affiche le jour en fonction de la date
                         jour: new Date(property).toLocaleDateString('fr-FR', { weekday: 'long' }),
@@ -29,7 +29,7 @@ const JourFeries = () => {
                 // listRTT sera crée par ADMIN
                 const listRTT = [
                     {
-                        id:crypto.randomUUID(),
+                        id: crypto.randomUUID(),
                         date: 'date1',
                         type: 'RTT Employeur',
                         jour: 'lundi',
@@ -37,7 +37,7 @@ const JourFeries = () => {
                     },
 
                     {
-                        id:crypto.randomUUID(),
+                        id: crypto.randomUUID(),
                         date: 'date2',
                         type: 'RTT Employeur',
                         jour: 'lundi',
@@ -65,8 +65,8 @@ const JourFeries = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {listJours.map( jour => (
-                        <AffichageJourFerie key = {jour.id} jour = {jour}/>
+                    {listJours.map(jour => (
+                        <AffichageJourFerie key={jour.id} jour={jour} />
                     ))}
 
                 </tbody>

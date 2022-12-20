@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 
 
-const AffichageValidation = ({ absence , fetchData }) => {
+const AffichageValidation = ({ absence, fetchData }) => {
   const utilisateur = JSON.parse(localStorage.getItem('user'));
 
   const handleValidation = () => {
@@ -15,7 +15,7 @@ const AffichageValidation = ({ absence , fetchData }) => {
         statut: 'VALIDEE'
       }
     })
-      .then( res =>  fetchData() ) // rechargement de la list
+      .then(res => fetchData()) // rechargement de la list
       .catch(err => console.log(err))
   }
 
@@ -28,7 +28,7 @@ const AffichageValidation = ({ absence , fetchData }) => {
         statut: 'REJETEE'
       }
     })
-      .then(res => console.log(res)) 
+      .then(res => console.log(res))
       .catch(err => console.log(err))
   }
 

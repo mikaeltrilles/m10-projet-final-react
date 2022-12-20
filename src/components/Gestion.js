@@ -4,7 +4,7 @@ import AffichageAbsences from './AffichageAbsences';
 
 // import { useState } from 'react';
 
-function Gestion({absences, setCongeModi}) {
+function Gestion({ absences, setCongeModi }) {
   console.log(absences)
 
   return (
