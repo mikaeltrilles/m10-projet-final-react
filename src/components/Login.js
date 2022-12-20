@@ -10,7 +10,7 @@ const Login = ({ setIsLog }) => {
       email: e.target.email.value,
       mdp: e.target.password.value
     }
-    axios.post('http://127.0.0.1:3001/login', utilisateur)
+    axios.post('http://127.0.0.1:3001/api/auth/login', utilisateur)
       .then((response) => {
         if (response.data.isLog) {
           setIsLog();
