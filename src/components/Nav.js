@@ -15,7 +15,7 @@ const Nav = () => {
 
     const utilisateur = JSON.parse(localStorage.getItem('user'));
 
-    const backendUrl = 'http://127.0.0.1:3001/';
+    const backendUrl = 'http://127.0.0.1:3001/api/';
 
     const fetchData = () => {
         axios.get(backendUrl + 'absences', {
@@ -35,7 +35,7 @@ const Nav = () => {
     useEffect(() => fetchData(), []);
 
     const deleteConge = (id) => {
-        axios.delete(`http://127.0.0.1:3001/delete/${id}`)
+        axios.delete(`http://127.0.0.1:3001/api/absences/${id}`)
             .then(() => { setAbsences(absences.filter(abs => abs._id !== id)) })
             .catch(err => console.log(err))
     }

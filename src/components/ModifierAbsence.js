@@ -40,7 +40,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
     }
 
     axios
-      .put(`http://127.0.0.1:3001/${congeModi._id}`, form)
+      .put(`http://127.0.0.1:3001/api/absences/${congeModi._id}`, form)
       .then((response) => {
         renderNewAbsence();
         navigate("/");

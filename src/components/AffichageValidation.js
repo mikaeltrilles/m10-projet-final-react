@@ -20,7 +20,7 @@ const AffichageValidation = ({ absence, fetchData }) => {
   }
 
   const handleRejet = () => {
-    axios.put(`http://127.0.0.1:3001/validation/${absence._id}`, {
+    axios.put(`http://127.0.0.1:3001/api/absences/validation/${absence._id}`, {
       headers: {
         'Authorization': `Basic ${utilisateur.token}`
       },

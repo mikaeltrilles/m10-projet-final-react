@@ -5,7 +5,7 @@ import AffichageValidation from './AffichageValidation';
 function Validation({ setCongeModi }) {
   const utilisateur = JSON.parse(localStorage.getItem('user'));
 
-  const backendUrl = 'http://127.0.0.1:3001/';
+  const backendUrl = 'http://127.0.0.1:3001/api/absences/';
 
   const fetchData = () => {
     axios.get(backendUrl + 'validation', {

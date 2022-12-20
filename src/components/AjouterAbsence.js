@@ -29,7 +29,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
             createdAt: new Date()
         }
 
-        axios.post('http://127.0.0.1:3001/creationAbsence', form)
+        axios.post('http://127.0.0.1:3001/api/absences', form)
             .then(response => {
                 navigate('/')
                 renderNewAbsence();
