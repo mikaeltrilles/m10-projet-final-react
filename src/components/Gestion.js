@@ -1,11 +1,54 @@
 import { Link } from 'react-router-dom';
 import AffichageAbsences from './AffichageAbsences';
-
-
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Gestion({ absences, setCongeModi }) {
-  console.log(absences)
+  // console.log(absences)
+
+  // Calcul des jours de conges restants
+  const [joursRestants, setJoursRestants] = useState(0);
+  const [rttRestants, setRttRestants] = useState(0);
+
+  useEffect(() => {
+    const joursRestants = 25 - absences.filter(abs => abs.type === 'conge').length;
+    const rttRestants = 6 - absences.filter(abs => abs.type === 'rtt').length;
+    setJoursRestants(joursRestants);
+    setRttRestants(rttRestants);
+  }, [absences])
+
+  // je recupere les absence de l'année en cours
+  const absencesAnneeEnCours = absences.filter(abs => {
+    const dateDebut = new Date(abs.dateDebut);
+    const dateFin = new Date(abs.dateFin);
+    const anneeEnCours = new Date().getFullYear();
+    return dateDebut.getFullYear() === anneeEnCours || dateFin.getFullYear() === anneeEnCours;
+  })
+
+  // console.log(absencesAnneeEnCours)
+
+  // je comptabilise les jopuors de congés payés
+  const congesAnneeEnCours = absencesAnneeEnCours.filter(abs => abs.type === 'Congés Payés' && abs.statut === 'VALIDEE');
+  const joursCongesAnneeEnCours = congesAnneeEnCours.reduce((acc, abs) => {
+    const dateDebut = new Date(abs.dateDebut);
+    const dateFin = new Date(abs.dateFin);
+    const nbJours = (dateFin - dateDebut) / (1000 * 3600 * 24) + 1;
+    return acc + nbJours;
+  }, 0)
+
+  // console.log(joursCongesAnneeEnCours)
+
+  // je recupere les rtt de l'année en cours
+  const rttAnneeEnCours = absencesAnneeEnCours.filter(abs => abs.type === 'RTT' && abs.statut === 'VALIDEE');
+  const joursRttAnneeEnCours = rttAnneeEnCours.reduce((acc, abs) => {
+    const dateDebut = new Date(abs.dateDebut);
+    const dateFin = new Date(abs.dateFin);
+    const nbJours = (dateFin - dateDebut) / (1000 * 3600 * 24) + 1;
+    return acc + nbJours;
+  }, 0)
+
+  console.log(joursRttAnneeEnCours)
+
+
 
   return (
     <div className="container">
@@ -40,11 +83,11 @@ function Gestion({ absences, setCongeModi }) {
       {/* Affichage des jours de congés restant et de RTT restant */}
       <div className="col-6">
         <h3 className="text-start">Jours de congés restant</h3>
-        <p className="text-start">Il vous reste 25 jours de congés</p>
+        <p className="text-start">Il vous reste {25 - joursCongesAnneeEnCours} jours de congés</p>
       </div>
       <div className="col-6">
         <h3 className="text-start">RTT restant</h3>
-        <p className="text-start">Il vous reste 5 jours de RTT</p>
+        <p className="text-start">Il vous reste {6 - joursRttAnneeEnCours} jours de RTT</p>
       </div>
     </div >
   );

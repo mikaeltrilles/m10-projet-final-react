@@ -9,6 +9,7 @@ import Modal from './Modal';
 import axios from 'axios';
 import Validation from './Validation';
 import JourFeries from './JourFeries';
+import Rtts from './Rtts';
 
 const Nav = () => {
 
@@ -57,8 +58,15 @@ const Nav = () => {
                     </>
 
                 }
-                <Link className="nav-link" to="/jourferies">Jour Fériés</Link>
-                {/* <Link to="/congé">gestion congé</Link> */}
+                <Link className="nav-link" to="/jourferies">Fériés/RTT</Link>
+                {/* <Link to="/conge">gestion congé</Link> */}
+                {/* ROLE_MANAGER */}
+                {utilisateur.role === 'ROLE_ADMIN' &&
+                    <>
+                        <Link className="nav-link" to="/rtts">Admin RTT/Férié</Link>
+                    </>
+
+                }
             </nav>
             <Routes>
                 <Route index element={<Gestion absences={absences} setCongeModi={setCongeModi} />} />
@@ -68,6 +76,7 @@ const Nav = () => {
                 <Route path="modify" element={<ModifierAbsence renderNewAbsence={renderNewAbsence} congeModi={congeModi} setCongeModi={setCongeModi} />} />
                 <Route path="validation" element={<Validation setCongeModi={setCongeModi} />} />
                 <Route path="jourferies" element={<JourFeries />} />
+                <Route path="rtts" element={<Rtts />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Modal congeModi={congeModi} deleteConge={deleteConge} />

@@ -10,12 +10,13 @@ const AffichageJourFerie = ({ jour }) => {
             <td>{jour.jour}</td>
             <td>{jour.commentaire}</td>
 
-            {utilisateur.role === 'ROLE_ADMIN' &&
+            {/* Si le role est ADMIN et que le jour est supérieur ou égal au jour courant */}
+            {(utilisateur.role === 'ROLE_ADMIN' && new Date(jour.date) >= new Date()) &&
+
                 <td>
-                    <button className="btn btn-outline-success me-md-2 btn-sm" >Modifier</button>
+                    <button className="btn btn-outline-success me-md-2 btn-sm">Modifier</button>
                     <button
                         className="btn btn-outline-danger me-md-2 btn-sm"
-
                     >
                         Supprimer
                     </button>
