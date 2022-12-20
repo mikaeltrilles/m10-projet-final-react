@@ -10,8 +10,8 @@ function Gestion({ absences, setCongeModi }) {
   const [rttRestants, setRttRestants] = useState(0);
 
   useEffect(() => {
-    const joursRestants = 25 - absences.filter(abs => abs.type === 'conge').length;
-    const rttRestants = 6 - absences.filter(abs => abs.type === 'rtt').length;
+    const joursRestants = 25 - absences.filter(abs => abs.type === 'Congés Payés').length;
+    const rttRestants = 6 - absences.filter(abs => abs.type === 'RTT').length;
     setJoursRestants(joursRestants);
     setRttRestants(rttRestants);
   }, [absences])
@@ -24,7 +24,7 @@ function Gestion({ absences, setCongeModi }) {
     return dateDebut.getFullYear() === anneeEnCours || dateFin.getFullYear() === anneeEnCours;
   })
 
-  
+
   // je comptabilise les jopuors de congés payés
   const congesAnneeEnCours = absencesAnneeEnCours.filter(abs => abs.type === 'Congés Payés' && abs.statut === 'VALIDEE');
   const joursCongesAnneeEnCours = congesAnneeEnCours.reduce((acc, abs) => {
@@ -33,8 +33,8 @@ function Gestion({ absences, setCongeModi }) {
     const nbJours = (dateFin - dateDebut) / (1000 * 3600 * 24) + 1;
     return acc + nbJours;
   }, 0)
-  
-  
+
+
   // je recupere les rtt de l'année en cours
   const rttAnneeEnCours = absencesAnneeEnCours.filter(abs => abs.type === 'RTT' && abs.statut === 'VALIDEE');
   const joursRttAnneeEnCours = rttAnneeEnCours.reduce((acc, abs) => {
@@ -43,9 +43,9 @@ function Gestion({ absences, setCongeModi }) {
     const nbJours = (dateFin - dateDebut) / (1000 * 3600 * 24) + 1;
     return acc + nbJours;
   }, 0)
-  
-  console.log( "joursCongesAnneeEnCours", joursCongesAnneeEnCours)
-  console.log( "joursRttAnneeEnCours", joursRttAnneeEnCours)
+
+  console.log("joursCongesAnneeEnCours", joursCongesAnneeEnCours)
+  console.log("joursRttAnneeEnCours", joursRttAnneeEnCours)
 
 
 
@@ -82,11 +82,11 @@ function Gestion({ absences, setCongeModi }) {
       {/* Affichage des jours de congés restant et de RTT restant */}
       <div className="col-6">
         <h3 className="text-start">Jours de congés restant</h3>
-        <p className="text-start">Il vous reste {joursRestants} jours de congés</p>
+        <p className="text-start">Il vous reste {25 - joursCongesAnneeEnCours} jours de congés</p>
       </div>
       <div className="col-6">
         <h3 className="text-start">RTT restant</h3>
-        <p className="text-start">Il vous reste {rttRestants} jours de RTT</p>
+        <p className="text-start">Il vous reste {6 -joursRttAnneeEnCours } jours de RTT</p>
       </div>
     </div >
   );

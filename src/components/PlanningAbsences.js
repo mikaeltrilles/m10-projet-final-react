@@ -1,26 +1,20 @@
-import React from 'react';
-// import calendar
-// import { Calendar } from '@fullcalendar/core';
-// import dayGridPlugin from '@fullcalendar/daygrid';
-// import timeGridPlugin from '@fullcalendar/timegrid';
-// import listPlugin from '@fullcalendar/list';
+import { useState } from 'react';
+import Calendar from 'react-calendar';
 
 const PlanningAbsences = () => {
 
-    // let calendar = new Calendar(calendarEl, {
-    //     plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
-    //     initialView: 'dayGridMonth',
-    //     headerToolbar: {
-    //         left: 'prev,next today',
-    //         center: 'title',
-    //         right: 'dayGridMonth,timeGridWeek,listWeek'
-    //     }
-    // });
-    // calendar.render();
-    return (
-        <div>
-            <h1>PLANNING ABSENCES</h1>
+    const [date, setDate] = useState(new Date());
 
+    return (
+        <div className='app'>
+            <h1 className='text-center'>React Calendar</h1>
+            <div className='calendar-container'>
+                <Calendar onChange={setDate} value={date} />
+            </div>
+            <p className='text-center'>
+                <span className='bold'>Selected Date:</span>{' '}
+                {date.toDateString()}
+            </p>
         </div>
     );
 };
