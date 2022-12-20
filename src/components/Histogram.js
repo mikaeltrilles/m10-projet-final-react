@@ -33,8 +33,21 @@ listes des dates à checquer . forEach( (jourAfficherDansHisto) => {
     useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/absences/all')
         .then( res => {
+
+
+            // Génération de la liste des jours pour l'affichange mensuel du premier au dernier jour du mois
+            const ListCheck = [];   // liste des jours à afficher
+            const firstDay = moment().startOf('month').format("YYYY-MM-DD");    // premier jour du mois
+            const lastDay = moment().endOf('month').format("YYYY-MM-DD");   // dernier jour du mois
+            const start = moment(firstDay); //  date de début
+            const end = moment(lastDay);    // date de fin
+            while (start <= end) {  // boucle pour générer la liste des jours
+                ListCheck.push(start.format("YYYY-MM-DD")); // ajout du jour à la liste
+                start.add(1, 'days');   // ajout d'un jour à la date de début
+            }
             
-            const ListCheck = ["2022-12-19","2022-12-20","2022-12-21","2022-12-22","2022-12-23","2022-12-24","2022-12-25"];
+
+            // const ListCheck = ["2022-12-19","2022-12-20","2022-12-21","2022-12-22","2022-12-23","2022-12-24","2022-12-25"];
             const listData = ListCheck.map((jour) => { return { name:jour } })
 
             const data = listData.map((ele) => {
