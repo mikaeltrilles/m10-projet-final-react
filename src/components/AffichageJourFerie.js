@@ -1,8 +1,19 @@
 import React from 'react';
 import moment from 'moment';
 
-const AffichageJourFerie = ({ jour }) => {
+const AffichageJourFerie = ({ jour, setShowModiFerieForm, setJour, deleteJour }) => {
     const utilisateur = JSON.parse(localStorage.getItem('user'));
+
+    const handleModifier = () => {
+        setShowModiFerieForm(true)
+        setJour({ ...jour });
+
+    }
+
+    const handleDelete = () => {
+        deleteJour(jour._id)
+    }
+
     return (
         <tr>
             <td>{moment(jour.date).format("DD-MM-YYYY")} </td>
@@ -10,21 +21,17 @@ const AffichageJourFerie = ({ jour }) => {
             <td>{jour.jour}</td>
             <td>{jour.commentaire}</td>
 
-            {/* Si le role est ADMIN et que le jour est supérieur ou égal au jour courant */}
-            {(utilisateur.role === 'ROLE_ADMIN' && new Date(jour.date) >= new Date()) ?
-
-                <td>
-                    <button className="btn btn-outline-success me-md-2 btn-sm">Modifier</button>
-                    <button
-                        className="btn btn-outline-danger me-md-2 btn-sm"
-                    >
-                        Supprimer
-                    </button>
-                </td>
-
+            {utilisateur.role === 'ROLE_ADMIN' ?
+                ( new Date(jour.date) >= new Date() ?
+                    <td>
+                        <button className="btn btn-outline-success me-md-2 btn-sm" onClick={handleModifier}>Modifier</button>
+                        <button className="btn btn-outline-danger me-md-2 btn-sm" onClick={handleDelete}> Supprimer </button>
+                    </td>
+                    :
+                    <td>Modification non autorisée</td>
+                )
                 :
-                <td>Modification non autorisée</td>
-    
+                null
             }
 
         </tr>

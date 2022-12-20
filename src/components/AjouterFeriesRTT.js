@@ -33,8 +33,8 @@ const AjouterFeriesRTT = ({setShowFerieForm, fetchData}) => {
                     <label htmlFor="exampleFormControlInput1" className="form-label w-25">Type</label>
                     <select name="type" className="form-select w-50" aria-label="Default select example">
                         <option defaultValue>Type</option>
-                        <option value="RTT">Jour Férie</option>
-                        <option value="Congés Payés">RTT Employeur</option>
+                        <option value="Jour Férie">Jour Férie</option>
+                        <option value="RTT Employeur">RTT Employeur</option>
                     </select>
                 </div>
                 <div className="mb-3 d-flex justify-content-center">
