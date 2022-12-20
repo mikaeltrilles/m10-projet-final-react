@@ -21,7 +21,6 @@ const AffichageAbsences = ({ absence, deleteConge, handleSetCongeModi }) => {
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={deleteConge}
-
               >
                 Supprimer
               </button>

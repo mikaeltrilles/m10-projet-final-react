@@ -21,18 +21,19 @@ const Modal = ({ congeModi, deleteConge }) => {
             <p>Date de début : {moment(congeModi.dateDebut).format("YYYY-MM-DD")}</p>
             <p>Date de fin : {moment(congeModi.dateFin).format("YYYY-MM-DD")}</p>
             <p>Type de congé : {congeModi.type}</p>
+            {congeModi.type==="Congé sans solde" ? <p>Motif : {congeModi.motif}</p> : null}
           </div>
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
             >
               Annuler
             </button>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-success"
               data-bs-dismiss="modal"
               onClick={() => { deleteConge(congeModi._id) }}
             >

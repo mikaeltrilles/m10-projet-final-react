@@ -94,7 +94,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
               <>
                 <option defaultValue>{congeModi.type}</option>
                 <option value="Congés Payés">Congés Payés</option>
-                <option value="Congés sans soldes">Congés sans soldes</option>
+                <option value="Congé sans solde">Congé sans solde</option>
               </>
             )}
 
@@ -102,11 +102,11 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
               <>
                 <option defaultValue>{congeModi.type}</option>
                 <option value="RTT">RTT</option>
-                <option value="Congés sans soldes">Congés sans soldes</option>
+                <option value="Congé sans solde">Congé sans solde</option>
               </>
             )}
 
-            {congeModi.type === "Congés sans soldes" && (
+            {congeModi.type === "Congé sans solde" && (
               <>
                 <option defaultValue>{congeModi.type}</option>
                 <option value="RTT">RTT</option>
@@ -132,7 +132,7 @@ const ModifierAbsence = ({ congeModi, renderNewAbsence, setCongeModi }) => {
           <button type="button" className="btn btn-danger" onClick={() => navigate("/")}>
             Annuler
           </button>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-success">
             Valider
           </button>
         </div>

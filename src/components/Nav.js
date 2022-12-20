@@ -30,6 +30,7 @@ const Nav = () => {
 
     const [congeModi, setCongeModi] = useState({});
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => fetchData(), []);
 
     const deleteConge = (id) => {

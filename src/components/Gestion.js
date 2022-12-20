@@ -31,11 +31,21 @@ function Gestion({ absences, setCongeModi }) {
               handleSetCongeModi={() => {
                 setCongeModi(abs)
               }}
+
             />
           ))}
         </tbody>
       </table>
-      <Link to="/ajout"><button type="submit" className="btn btn-primary">➕ Demande d'absence</button></Link>
+      <Link to="/ajout"><button type="submit" className="btn btn-info">➕ Demande d'absence</button></Link>
+      {/* Affichage des jours de congés restant et de RTT restant */}
+      <div className="col-6">
+        <h3 className="text-start">Jours de congés restant</h3>
+        <p className="text-start">Il vous reste 25 jours de congés</p>
+      </div>
+      <div className="col-6">
+        <h3 className="text-start">RTT restant</h3>
+        <p className="text-start">Il vous reste 5 jours de RTT</p>
+      </div>
     </div >
   );
 };

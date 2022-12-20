@@ -56,7 +56,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
                         <option defaultValue>Type de congés</option>
                         <option value="RTT">RTT</option>
                         <option value="Congés Payés">Congés Payés</option>
-                        <option value="Congés sans soldes">Congés sans soldes</option>
+                        <option value="Congé sans solde">Congé sans solde</option>
                     </select>
                 </div>
                 {/* TODO Si le type de conges est "conges sans solde" le motif est obligatoire */}
@@ -68,7 +68,7 @@ const AjouterAbsence = ({ renderNewAbsence }) => {
                     <button type="button" className="btn btn-danger" onClick={() => navigate("/")}>
                         Annuler
                     </button>
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-success">
                         Valider
                     </button>
                 </div>

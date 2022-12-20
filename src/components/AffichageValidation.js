@@ -40,12 +40,12 @@ const AffichageValidation = ({ absence, fetchData }) => {
       <td>{absence.nom} {absence.prenom}</td>
 
       <td>
-        <button className="btn btn-outline-success me-md-2 btn-sm" onClick={handleValidation}>Valider</button>
+        <button className="btn btn-outline-success me-md-2 btn-sm color-green" onClick={handleValidation}>✓</button>
         <button
-          className="btn btn-outline-danger me-md-2 btn-sm"
+          className="btn btn-outline-danger me-md-2 btn-sm color-red"
           onClick={handleRejet}
         >
-          Rejetter
+          ✗
         </button>
       </td>
     </tr>
