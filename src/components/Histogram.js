@@ -42,32 +42,20 @@ const Histogram = ({ setShowHistogram, setShowSynthese }) => {
                 const start = moment(firstDay); //  date de début
                 const end = moment(lastDay);    // date de fin
                 while (start <= end) {  // boucle pour générer la liste des jours
-                    // si le jour est un samedi ou un dimanche il y aura 0 jour d'absence sinon 
-                    // il y aura le nombre d'absence du jour
-                    if (start.day() === 0 || start.day() === 6) {
-                        ListCheck.push({ name: start.format("YYYY-MM-DD"), 0: 0 })
-                    }
-                    else {
-                        ListCheck.push({ name: start.format("YYYY-MM-DD") })
-                    }
-                    start.add(1, 'days');
+                    ListCheck.push(start.format("YYYY-MM-DD")); // ajout du jour à la liste
+                    start.add(1, 'days');   // ajout d'un jour à la date de début
                 }
 
-                const listData = ListCheck.map((jour) => { return { name: jour } }) // liste des jours à afficher
 
-                const data = listData.map((ele) => {    // boucle pour générer les données à afficher
+                // const ListCheck = ["2022-12-19","2022-12-20","2022-12-21","2022-12-22","2022-12-23","2022-12-24","2022-12-25"];
+                const listData = ListCheck.map((jour) => { return { name: jour } })
+
+                const data = listData.map((ele) => {
                     res.data.forEach(abs => {
-                        // si le departement de l'absence est le même que celui de l'utilisateur
-                        // if (abs.departement === users.departement.value) {
-                            const found = abs.jours.find(jourAbsence => { return moment(jourAbsence).format("YYYY-MM-DD") === ele.name })
-                            if (found) {
-                                ele[abs.nom + ' ' + abs.prenom] = 1
-                            // }
+                        const found = abs.jours.find(jourAbsence => { return moment(jourAbsence).format("YYYY-MM-DD") === ele.name })
+                        if (found) {
+                            ele[abs.nom + ' ' + abs.prenom] = 1
                         }
-                        // const found = abs.jours.find(jourAbsence => { return moment(jourAbsence).format("YYYY-MM-DD") === ele.name })
-                        // if (found) {
-                        //     ele[abs.nom + ' ' + abs.prenom] = 1
-                        // }
                     })
                     // console.log(ele)
                     return ele
@@ -101,48 +89,38 @@ const Histogram = ({ setShowHistogram, setShowSynthese }) => {
     // console.log(generateRandomColor()); 
 
     return (
-        <>
+        <div>
             <div>
                 Histogramme par département et par jour
-                {/* select du departement / select de l'année : select du mois */}
-            </div>
-            <BarChart
-                width={1500}
-                height={600}
-                data={data}
-                margin={{
-                    top: 10,
-                    right: 0,
-                    left: 0,
-                    bottom: 20,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name"  />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {/* image length.absense === 6 */}
-                {
-                    users.map((user) => {
-                        return <Bar dataKey={user.name} stackId="a" fill={generateRandomColor()} />
-                    })
-                }
-            </BarChart>
+                <BarChart
+                    width={1500}
+                    height={450}
+                    data={data}
+                    margin={{
+                        top: 20,
+                        right: 30,
+                        left: 20,
+                        bottom: 5
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    {/* image length.absense === 6 */}
+                    {
+                        users.map((user) => {
+                            return <Bar dataKey={user.name} stackId="a" fill={generateRandomColor()} />
+                        })
+                    }
 
-            <div>
-                <button className='btn btn-primary btn-sm' onClick={handleClick}> retour </button>
+                </BarChart>
             </div>
-        </>
+
+            <button className='btn btn-primary btn-sm' onClick={handleClick}> retour </button>
+        </div>
     );
 };
 
 export default Histogram;
-
-
-
-/**!SECTION
- * 
- * ListCheck.push(start.format("YYYY-MM-DD")); // ajout du jour à la liste
-                        start.add(1, 'days'); 
- */
